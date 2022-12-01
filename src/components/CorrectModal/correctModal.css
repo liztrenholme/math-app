@@ -1,0 +1,14 @@
+.modal-container {
+    position: fixed;
+    z-index: 100000010;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px #222;
+    width: 60%;
+    /* max-height: 80%; */
+    height: fit-content;
+    overflow: scroll;
+    top: 20em;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
