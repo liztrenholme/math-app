@@ -113,7 +113,7 @@ const Main = (props) => {
       <div>
         <h2>You've gotten {correctCount} correct so far!</h2>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'row', margin: '5em' }}>
+      <div style={{backgroundColor: 'white', borderRadius: '20px', width: '100%'}}>
         <div className='settings-box'>
           <div>
             <h3>{mode}</h3>
