@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   background-color: rgb(113, 124, 227);
+  width: 100%;
+  display: flex;
 }
 body {
   background-color: rgb(113, 124, 227);
