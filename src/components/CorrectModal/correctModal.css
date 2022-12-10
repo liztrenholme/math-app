@@ -4,7 +4,7 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 5px 5px 20px #222;
-    width: 60%;
+    width: fit-content;
     /* max-height: 80%; */
     height: fit-content;
     overflow: scroll;

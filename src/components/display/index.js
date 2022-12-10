@@ -7,7 +7,7 @@ class Display extends Component {
     return (
       <div className='display'>
         <div style={{
-          width: '20em', 
+          // width: '20em', 
           height: '10em', 
           backgroundColor: this.props.color, 
           border: '5px solid #fff',
