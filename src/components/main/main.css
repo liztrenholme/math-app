@@ -5,8 +5,8 @@
     margin: 2em; */
     background-color: rgb(18, 217, 236);
     border-radius: 20px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 2em auto auto;
+    padding: 1em;
     /* width: 100%; */
 }
 
@@ -37,7 +37,7 @@ h1 {
 
 .settings-box {
     background-color: aliceblue;
-    width: 20em;
+    /* width: 20em; */
     border-radius: 15px;
     padding: 1em;
     height: fit-content;
@@ -49,9 +49,20 @@ h1 {
 }
 
 .mathing-area {
-    width: 25em;
+    /* width: 25em; */
     margin: 2em;
     font-size: 1.5em;
+}
+
+.equation {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.mathing-btn-input {
+    display: flex;
+    flex-direction: column;
 }
 
 /* .inputWithSave {
@@ -191,6 +202,9 @@ span {
         grid-template-columns: auto auto auto;
         width: 100%;
     }
+    .mathing-area {
+        font-size: 1.5em;
+    }
 }
 
 @media (max-width: 624.98px) {
@@ -208,6 +222,11 @@ span {
     }
     .instructions {
         display: none;
+    }
+    .equation {
+        display: grid;
+        flex-direction: 75% 25%;
+    
     }
 }
 

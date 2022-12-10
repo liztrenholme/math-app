@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './main.css';
 // import Display from '../display/index';
 import Input from '../Input/index';
-import InfoIconCircle from './assets/infoicon.png';
+// import InfoIconCircle from './assets/infoicon.png';
 import {
   adding, subtracting, multiplying, dividing, randomNumberGenerator, isNumber
 } from '../modules/index.js';
@@ -18,9 +18,10 @@ const Main = (props) => {
   const [answer, setAnswer] = useState('')
   const [correct, setCorrect] = useState(null)
   const [correctCount, setCorrectCount] = useState(0)
+  const [hasPlayed, setHasPlayed] = useState(false)
 
   const handleChangeInput = (e) => {
-      const numCheck = isNumber(e.target.value)
+    const numCheck = isNumber(e.target.value)
     if (numCheck || e.target.value === '') {
       e.preventDefault();
       setAnswer(e.target.value)
@@ -31,8 +32,17 @@ const Main = (props) => {
     setMode(newMode);
     setAnswer('')
     if (mathFunction !== 'Choose math function type:') {
-      setNum1(randomNumberGenerator(mode))
-      setNum2(randomNumberGenerator(mode))
+      const num1 = randomNumberGenerator(mode)
+      const num2 = randomNumberGenerator(mode)
+      if (num2 > num1) {
+        const newNum1 = num2;
+        const newNum2 = num1;
+        setNum1(newNum1);
+        setNum2(newNum2);
+      } else {
+        setNum1(num1)
+        setNum2(num2)
+      }
     }
   }
 
@@ -40,8 +50,17 @@ const Main = (props) => {
     setMathFunction(newFunction)
     setAnswer('')
     if (mode !== 'Choose a mode:') {
-      setNum1(randomNumberGenerator(mode))
-      setNum2(randomNumberGenerator(mode))
+      const num1 = randomNumberGenerator(mode)
+      const num2 = randomNumberGenerator(mode)
+      if (num2 > num1) {
+        const newNum1 = num2;
+        const newNum2 = num1;
+        setNum1(newNum1);
+        setNum2(newNum2);
+      } else {
+        setNum1(num1)
+        setNum2(num2)
+      }
     }
   }
 
@@ -91,13 +110,23 @@ const Main = (props) => {
       }
     }
     setAnswer('')
+    setHasPlayed(true)
   }
 
   const handleReset = () => {
     setAnswer('')
     setCorrect(null)
-    setNum1(randomNumberGenerator(mode))
-    setNum2(randomNumberGenerator(mode))
+    const num1 = randomNumberGenerator(mode)
+    const num2 = randomNumberGenerator(mode)
+    if (num2 > num1) {
+      const newNum1 = num2;
+      const newNum2 = num1;
+      setNum1(newNum1);
+      setNum2(newNum2);
+    } else {
+      setNum1(num1)
+      setNum2(num2)
+    }
   }
 
   console.log('random', num1, num2)
@@ -110,10 +139,10 @@ const Main = (props) => {
             : null} */}
       {correct ? <CorrectModal reset={handleReset} /> : null}
       <h1>Math Game</h1>
-      <div>
+      {hasPlayed ? <div>
         <h2>You've gotten {correctCount} correct so far!</h2>
-      </div>
-      <div style={{backgroundColor: 'white', borderRadius: '20px', width: '100%'}}>
+      </div> : null}
+      <div style={{ backgroundColor: 'white', borderRadius: '20px', width: '100%' }}>
         <div className='settings-box'>
           <div>
             <h3>{mode}</h3>
@@ -135,11 +164,19 @@ const Main = (props) => {
           </div>
         </div>
         <div className='mathing-area'>
-          {num2 !== null ? num1 > num2 ? num1 : num2 : '?'}
-          {mathFunction === 'addition' ? ' + ' : mathFunction === 'subtraction' ? ' - ' : mathFunction === 'multiplication' ? ' x ' : mathFunction === 'division' ? ' / ' : ' ? '}
-          {num2 !== null ? num2 < num1 ? num2 : num1 : '?'} =
-          <Input answer={answer} handleChangeInput={handleChangeInput} disabled={!mode || !mathFunction ? true : false} />
-          <div className={answer && answer.length ? 'submitBtn' : 'disabled'} onClick={handleCompareAnswer}>Submit</div>
+          <div className='equation'>
+            <div style={{ margin: 'auto' }}>
+              {num1 !== null ? num1 : '?'}
+              {mathFunction === 'addition' ? ' + ' : mathFunction === 'subtraction' ? ' - ' : mathFunction === 'multiplication' ? ' x ' : mathFunction === 'division' ? ' / ' : ' ? '}
+              {num2 !== null ? num2 : '?'} =
+            </div>
+            <Input answer={answer} handleChangeInput={handleChangeInput} disabled={!mode || !mathFunction ? true : false} />
+          </div>
+          <div className='mathing-btn-input'>
+            <div style={{ marginLeft: 'auto', marginRight: 'auto' }}
+              className={num1 && num2 && answer && answer.length ? 'submitBtn' : 'disabled'}
+              onClick={handleCompareAnswer}>Submit</div>
+          </div>
         </div>
       </div>
       {json.version}
