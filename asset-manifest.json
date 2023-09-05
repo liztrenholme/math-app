@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/math-app/static/css/main.47e5e093.chunk.css",
-    "main.js": "/math-app/static/js/main.204e6c61.chunk.js",
-    "main.js.map": "/math-app/static/js/main.204e6c61.chunk.js.map",
+    "main.css": "/math-app/static/css/main.9202bef6.chunk.css",
+    "main.js": "/math-app/static/js/main.67e5eb7e.chunk.js",
+    "main.js.map": "/math-app/static/js/main.67e5eb7e.chunk.js.map",
     "runtime-main.js": "/math-app/static/js/runtime-main.8a282f4b.js",
     "runtime-main.js.map": "/math-app/static/js/runtime-main.8a282f4b.js.map",
     "static/js/2.fa7177b7.chunk.js": "/math-app/static/js/2.fa7177b7.chunk.js",
     "static/js/2.fa7177b7.chunk.js.map": "/math-app/static/js/2.fa7177b7.chunk.js.map",
     "index.html": "/math-app/index.html",
-    "precache-manifest.58ad8ebb6b0add5e14d49f4086a3f1c3.js": "/math-app/precache-manifest.58ad8ebb6b0add5e14d49f4086a3f1c3.js",
+    "precache-manifest.c696235f3c97e7cce2f95aba9ca87b97.js": "/math-app/precache-manifest.c696235f3c97e7cce2f95aba9ca87b97.js",
     "service-worker.js": "/math-app/service-worker.js",
-    "static/css/main.47e5e093.chunk.css.map": "/math-app/static/css/main.47e5e093.chunk.css.map",
+    "static/css/main.9202bef6.chunk.css.map": "/math-app/static/css/main.9202bef6.chunk.css.map",
     "static/js/2.fa7177b7.chunk.js.LICENSE.txt": "/math-app/static/js/2.fa7177b7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8a282f4b.js",
     "static/js/2.fa7177b7.chunk.js",
-    "static/css/main.47e5e093.chunk.css",
-    "static/js/main.204e6c61.chunk.js"
+    "static/css/main.9202bef6.chunk.css",
+    "static/js/main.67e5eb7e.chunk.js"
   ]
 }
