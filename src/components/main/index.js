@@ -174,7 +174,7 @@ const Main = (props) => {
           </div>
           <div className='mathing-btn-input'>
             <div style={{ marginLeft: 'auto', marginRight: 'auto' }}
-              className={num1 && num2 && answer && answer.length ? 'submitBtn' : 'disabled'}
+              className={typeof num1 === 'number' && typeof num2 === 'number' && answer && answer.length ? 'submitBtn' : 'disabled'}
               onClick={handleCompareAnswer}>Submit</div>
           </div>
         </div>
