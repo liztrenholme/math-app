@@ -145,16 +145,16 @@ const Main = (props) => {
       <div style={{ backgroundColor: 'white', borderRadius: '20px', width: '100%' }}>
         <div className='settings-box'>
           <div>
-            <h3>{mode}</h3>
+            <h3>{mode ? mode.toUpperCase() : ''}</h3>
             <div className='buttons-box'>
               <div className={`settingBtn ${mode === 'easy' ? 'active' : 'inactive'}`} onClick={() => handleSetMode('easy')}>easy</div>
               <div className={`settingBtn ${mode === 'medium' ? 'active' : 'inactive'}`} onClick={() => handleSetMode('medium')}>medium</div>
-              <div className={`settingBtn ${mode === 'hard' ? 'active' : 'inactive'}`} onClick={() => handleSetMode('hard')}>hard</div>
-              <div className={`settingBtn ${mode === 'expert' ? 'active' : 'inactive'}`} onClick={() => handleSetMode('expert')}>expert</div>
+              {/* <div className={`settingBtn ${mode === 'hard' ? 'active' : 'inactive'}`} onClick={() => handleSetMode('hard')}>hard</div> */}
+              {/* <div className={`settingBtn ${mode === 'expert' ? 'active' : 'inactive'}`} onClick={() => handleSetMode('expert')}>expert</div> */}
             </div>
           </div>
           <div>
-            <h3>{mathFunction}</h3>
+            <h3>{mathFunction ? mathFunction.toUpperCase() : ''}</h3>
             <div className='buttons-box'>
               <div className={`settingBtn ${mathFunction === 'addition' ? 'active' : 'inactive'}`} onClick={() => handleSetMathFunction('addition')}>+</div>
               <div className={`settingBtn ${mathFunction === 'subtraction' ? 'active' : 'inactive'}`} onClick={() => handleSetMathFunction('subtraction')}>-</div>
