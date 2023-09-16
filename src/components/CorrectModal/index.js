@@ -1,21 +1,26 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './correctModal.css';
 import PropTypes from 'prop-types';
 import { giphySelector } from './modules';
 
 const CorrectModal = (props) => {
-    console.log(props.display)
-    return (
+  const [displayImg, setDisplayImg] = useState(true)
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setDisplayImg(false)
+        props.reset()
+      }, 5000);
+      return () => clearTimeout(timer);
+    }, [props]);
+    return displayImg ? (
       <div className="modal-container" onClick={props.reset}>
        <img src={giphySelector()} alt="yay!" />
       </div>
-    );
+    ) : null
 }
 
 CorrectModal.propTypes = {
-  color: PropTypes.string,
-  handleColorChange: PropTypes.func,
-  mode: PropTypes.string
+  reset: PropTypes.func 
 };
   
 
