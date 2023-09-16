@@ -19,6 +19,7 @@ const Main = (props) => {
   const [correct, setCorrect] = useState(null)
   const [correctCount, setCorrectCount] = useState(0)
   const [hasPlayed, setHasPlayed] = useState(false)
+  const [inputDisabled, setInputDisabled] = useState(false)
 
   const handleChangeInput = (e) => {
     const numCheck = isNumber(e.target.value)
@@ -73,6 +74,7 @@ const Main = (props) => {
   const handleDivide = (a, b) => dividing(a, b);
 
   const handleCompareAnswer = () => {
+    setInputDisabled(true)
     if (mathFunction === 'addition') {
       const correctAnswer = handleAdd(num1, num2)
       if (correctAnswer === Number(answer)) {
@@ -114,6 +116,7 @@ const Main = (props) => {
   }
 
   const handleReset = () => {
+    setInputDisabled(false)
     setAnswer('')
     setCorrect(null)
     const num1 = randomNumberGenerator(mode)
@@ -170,7 +173,7 @@ const Main = (props) => {
               {mathFunction === 'addition' ? ' + ' : mathFunction === 'subtraction' ? ' - ' : mathFunction === 'multiplication' ? ' x ' : mathFunction === 'division' ? ' / ' : ' ? '}
               {num2 !== null ? num2 : '?'} =
             </div>
-            <Input answer={answer} handleChangeInput={handleChangeInput} disabled={!mode || !mathFunction ? true : false} />
+            <Input answer={answer} handleChangeInput={handleChangeInput} disabled={inputDisabled || !mode || !mathFunction ? true : false} />
           </div>
           <div className='mathing-btn-input'>
             <div style={{ marginLeft: 'auto', marginRight: 'auto' }}

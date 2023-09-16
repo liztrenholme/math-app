@@ -9,10 +9,10 @@ class Input extends Component {
       <div className="input">
         <input 
         disabled={disabled}
-        type="text"
+        inputMode='numeric'
         value={answer} 
-          onChange={(e) => handleChangeInput(e)}
-          pattern="^[0-9]*$" />
+        onChange={(e) => handleChangeInput(e)}
+        pattern="^[0-9]*$" />
       </div>
     );
   }
