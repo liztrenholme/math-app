@@ -9,6 +9,7 @@ import {
 } from '../modules/index.js';
 import json from '../../../package.json';
 import CorrectModal from '../CorrectModal';
+import TryAgainModal from '../tryAgainModal';
 
 const Main = (props) => {
   const [mode, setMode] = useState('Choose a mode:');
@@ -17,6 +18,7 @@ const Main = (props) => {
   const [num2, setNum2] = useState(null)
   const [answer, setAnswer] = useState('')
   const [correct, setCorrect] = useState(null)
+  const [tryAgain, setTryAgain] = useState(null)
   const [correctCount, setCorrectCount] = useState(0)
   const [hasPlayed, setHasPlayed] = useState(false)
   const [inputDisabled, setInputDisabled] = useState(false)
@@ -52,7 +54,8 @@ const Main = (props) => {
     setAnswer('')
     if (mode !== 'Choose a mode:') {
       const num1 = randomNumberGenerator(mode)
-      const num2 = randomNumberGenerator(mode)
+      const num2 = randomNumberGenerator(mode === 'medium' ? 'easy' : mode)
+      console.log('num1 num2', num1, num2)
       if (num2 > num1) {
         const newNum1 = num2;
         const newNum2 = num1;
@@ -82,6 +85,7 @@ const Main = (props) => {
         setCorrectCount(correctCount + 1)
       } else {
         setCorrect(false)
+        setTryAgain(true)
       }
     }
     if (mathFunction === 'subtraction') {
@@ -91,6 +95,7 @@ const Main = (props) => {
         setCorrectCount(correctCount + 1)
       } else {
         setCorrect(false)
+        setTryAgain(true)
       }
     }
     if (mathFunction === 'multiplication') {
@@ -100,6 +105,7 @@ const Main = (props) => {
         setCorrectCount(correctCount + 1)
       } else {
         setCorrect(false)
+        setTryAgain(true)
       }
     }
     if (mathFunction === 'division') {
@@ -109,6 +115,7 @@ const Main = (props) => {
         setCorrectCount(correctCount + 1)
       } else {
         setCorrect(false)
+        setTryAgain(true)
       }
     }
     setAnswer('')
@@ -120,7 +127,7 @@ const Main = (props) => {
     setAnswer('')
     setCorrect(null)
     const num1 = randomNumberGenerator(mode)
-    const num2 = randomNumberGenerator(mode)
+    const num2 = randomNumberGenerator(mode === 'medium' ? 'easy' : mode)
     if (num2 > num1) {
       const newNum1 = num2;
       const newNum2 = num1;
@@ -132,6 +139,24 @@ const Main = (props) => {
     }
   }
 
+  const tryAgainReset = () => {
+    setInputDisabled(false)
+    setAnswer('')
+    setTryAgain(null)
+    setCorrect(null)
+    // const num1 = randomNumberGenerator(mode)
+    // const num2 = randomNumberGenerator(mode === 'medium' ? 'easy' : mode)
+    // if (num2 > num1) {
+    //   const newNum1 = num2;
+    //   const newNum2 = num1;
+    //   setNum1(newNum1);
+    //   setNum2(newNum2);
+    // } else {
+    //   setNum1(num1)
+    //   setNum2(num2)
+    // }
+  }
+
   console.log('random', num1, num2)
   console.log('correct??', correct)
 
@@ -141,6 +166,7 @@ const Main = (props) => {
             <div className='modal-overlay' />
             : null} */}
       {correct ? <CorrectModal reset={handleReset} /> : null}
+      {tryAgain ? <TryAgainModal reset={tryAgainReset} /> : null}
       <h1>Math Game</h1>
       {hasPlayed ? <div>
         <h2>You've gotten {correctCount} correct so far!</h2>
